@@ -98,18 +98,13 @@
 
         #secret-button {
             position: relative;
-            transition: left 0.3s, top 0.3s;
+            transition: left 0.25s, top 0.25s;
         }
 
         #secret-message {
             color: var(--light-blue);
             min-height: 25px;
             margin-top: 20px;
-        }
-
-        #visitor-counter {
-            color: var(--light-blue);
-            font-size: 18px;
         }
 
         a {
@@ -156,13 +151,13 @@
     <section class="box">
         <h2>about me</h2>
         <p>hello. i am leviathan.</p>
-        <p>age: no.</p>
+        <p>age: 16.</p>
         <p>
             my personality is basically a lucky dip.
             sometimes silly, sometimes shy, sometimes loud,
             sometimes quiet. depends on the person, topic and situation.
         </p>
-        <p>i am also far too scared to approach people first. </p>
+        <p>i am also far too scared to approach people first.</p>
     </section>
 
     <section class="box">
@@ -175,7 +170,7 @@
 
         <p>
             if you do like me, you're welcome to approach!
-            unless my status says dnd or dni.
+            unless my status says otherwise.
         </p>
 
         <p>please do not interact if you are:</p>
@@ -213,7 +208,7 @@
             rihanna
         </p>
 
-        <p class="subtitle">there are definitely more. i just forgor.</p>
+        <p class="subtitle">there are definitely more. i just forgor..</p>
     </section>
 
     <section class="box">
@@ -226,12 +221,11 @@
     </section>
 
     <section class="box">
-        <h2>visitors</h2>
-        <p>people who have wandered into this corner:</p>
-
-        <p id="visitor-counter">loading...</p>
-
-        <p class="subtitle">yes, i am counting you.</p>
+        <h2>before you go...</h2>
+        <p>thank you for visiting my little corner of the internet!</p>
+        <p>i hope you enjoyed your stay.</p>
+        <p class="subtitle">have a lovely day. or don't. i'm not your manager.</p>
+        <p>— leviathan 🩵</p>
     </section>
 
     <footer>
@@ -259,12 +253,12 @@
             "welp, there goes the money i spent on that button..",
             "oh come on.",
             "maybe i shouldve made the button a darker blue.. yeah people would avoid it then..",
-            "wow, real funny. LOOK AT WHAT YOU DID?!",
+            "wow, real funny. look at what you did?!",
             "i am beginning to regret this.",
-            "STOP CHASING ME.",
+            "stop chasing me.",
             "this is a cry for help.",
             "you have too much free time.",
-            "I AM A BUTTON. LEAVE ME ALONE."
+            "i am a button. leave me alone."
         ];
 
         let clicks = 0;
@@ -280,6 +274,8 @@
             if (clicks >= 2) {
                 button.style.position = "fixed";
 
+                const chaos = Math.min(clicks * 20, 200);
+
                 const maxX = window.innerWidth - button.offsetWidth;
                 const maxY = window.innerHeight - button.offsetHeight;
 
@@ -288,30 +284,23 @@
 
                 button.style.left = randomX + "px";
                 button.style.top = randomY + "px";
+
+                button.style.transform =
+                    "rotate(" + (Math.random() * chaos - chaos / 2) + "deg)";
             }
 
             if (clicks >= 5) {
-                button.textContent = "STOP.";
+                button.textContent = "stop.";
             }
 
             if (clicks >= 10) {
-                button.textContent = "I'M BEGGING YOU.";
+                button.textContent = "im begging you.";
+            }
+
+            if (clicks >= 15) {
+                button.textContent = "LEAVE ME ALONE.";
             }
         });
-
-
-        // visitor counter
-
-        const counter = document.getElementById("visitor-counter");
-
-        fetch("https://api.counterapi.dev/v1/leviathans-corner/visits/up")
-            .then(response => response.json())
-            .then(data => {
-                counter.textContent = "visitor number " + data.count;
-            })
-            .catch(() => {
-                counter.textContent = "the counter is currently hiding.";
-            });
     </script>
 
 </body>
