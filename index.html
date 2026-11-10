@@ -1,36 +1,318 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>leviathans corner</title>
+
     <style>
+        :root {
+            --background: #10131a;
+            --box: #171e2b;
+            --blue: #69caff;
+            --light-blue: #b9e7ff;
+            --text: #e8f4ff;
+            --muted: #9eafc2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #111;
-            color: #eee;
+            background-color: var(--background);
+            color: var(--text);
             font-family: monospace;
             text-align: center;
-            padding: 80px 20px;
+            padding: 35px 15px;
+            margin: 0;
+            cursor: none;
+        }
+
+        #star-cursor {
+            position: fixed;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: 9999;
+            color: var(--blue);
+            font-size: 22px;
+            transform: translate(-50%, -50%);
+        }
+
+        h1, h2 {
+            color: var(--blue);
         }
 
         h1 {
-            color: #b58aff;
-            font-size: 40px;
+            font-size: 42px;
+        }
+
+        h2 {
+            font-size: 24px;
+        }
+
+        p {
+            line-height: 1.7;
         }
 
         .box {
-            border: 1px solid #b58aff;
-            padding: 30px;
-            max-width: 500px;
-            margin: auto;
+            border: 1px solid var(--blue);
+            background-color: var(--box);
+            padding: 25px;
+            max-width: 650px;
+            margin: 25px auto;
+            border-radius: 8px;
+        }
+
+        .subtitle {
+            color: var(--muted);
+        }
+
+        .artist-list {
+            line-height: 2;
+            color: var(--light-blue);
+        }
+
+        .boundary-list {
+            line-height: 2;
+            text-align: left;
+            display: inline-block;
+        }
+
+        button {
+            background-color: var(--blue);
+            color: #10131a;
+            border: none;
+            padding: 13px 22px;
+            font-family: monospace;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: var(--light-blue);
+        }
+
+        #secret-button {
+            position: relative;
+            transition: left 0.3s, top 0.3s;
+        }
+
+        #secret-message {
+            color: var(--light-blue);
+            min-height: 25px;
+            margin-top: 20px;
+        }
+
+        #visitor-counter {
+            color: var(--light-blue);
+            font-size: 18px;
+        }
+
+        a {
+            color: var(--blue);
+        }
+
+        footer {
+            color: var(--muted);
+            margin-top: 40px;
+            font-size: 12px;
+        }
+
+        @media (max-width: 500px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .box {
+                padding: 18px;
+            }
+
+            body {
+                cursor: auto;
+            }
+
+            #star-cursor {
+                display: none;
+            }
         }
     </style>
 </head>
 
 <body>
-    <div class="box">
-        <h1>HOWDY.</h1>
+
+    <div id="star-cursor">✦</div>
+
+    <header class="box">
+        <h1>howdy.</h1>
         <p>you have found my little corner of the internet.</p>
-        <p>epic introduction coming soon...</p>
+        <p class="subtitle">i lowkey have no clue what im doing</p>
         <p>— leviathan</p>
-    </div>
+    </header>
+
+    <section class="box">
+        <h2>about me</h2>
+        <p>hello. i am leviathan.</p>
+        <p>age: no.</p>
+        <p>
+            my personality is basically a lucky dip.
+            sometimes silly, sometimes shy, sometimes loud,
+            sometimes quiet. depends on the person, topic and situation.
+        </p>
+        <p>i am also far too scared to approach people first. </p>
+    </section>
+
+    <section class="box">
+        <h2>boundaries & dni</h2>
+
+        <p>
+            if you don't like me, that's fine.
+            just don't interact. saves us both time.
+        </p>
+
+        <p>
+            if you do like me, you're welcome to approach!
+            unless my status says dnd or dni.
+        </p>
+
+        <p>please do not interact if you are:</p>
+
+        <ul class="boundary-list">
+            <li>a predator, pedophile or creep</li>
+            <li>homophobic or transphobic</li>
+            <li>heterophobic or disrespectful towards straight people</li>
+            <li>someone who enjoys being hateful towards others</li>
+            <li>extremely dry when talking</li>
+            <li>under 11 or over 21</li>
+            <li>in the freak circus (tfc) or dandy's world (dw) fandom.</li>
+        </ul>
+
+        <p>
+            these are my personal boundaries and preferences.
+            please respect them.
+        </p>
+    </section>
+
+    <section class="box">
+        <h2>music corner</h2>
+        <p>some artists i listen to:</p>
+
+        <p class="artist-list">
+            sir mix-a-lot<br>
+            cupcakKe<br>
+            hatsune miku<br>
+            illit<br>
+            tyler, the creator<br>
+            weezer<br>
+            beyoncé<br>
+            doja cat<br>
+            britney spears<br>
+            rihanna
+        </p>
+
+        <p class="subtitle">there are definitely more. i just forgor.</p>
+    </section>
+
+    <section class="box">
+        <h2>the button.</h2>
+        <p>there is absolutely no reason to press this.</p>
+
+        <button id="secret-button">do not press</button>
+
+        <p id="secret-message"></p>
+    </section>
+
+    <section class="box">
+        <h2>visitors</h2>
+        <p>people who have wandered into this corner:</p>
+
+        <p id="visitor-counter">loading...</p>
+
+        <p class="subtitle">yes, i am counting you.</p>
+    </section>
+
+    <footer>
+        <p>made with questionable levels of confidence by leviathan.</p>
+    </footer>
+
+    <script>
+        // the little blue star follows your cursor
+
+        const star = document.getElementById("star-cursor");
+
+        document.addEventListener("mousemove", function(event) {
+            star.style.left = event.clientX + "px";
+            star.style.top = event.clientY + "px";
+        });
+
+
+        // the button slowly loses its mind
+
+        const button = document.getElementById("secret-button");
+        const message = document.getElementById("secret-message");
+
+        const messages = [
+            "i told you not to press it!!!!",
+            "welp, there goes the money i spent on that button..",
+            "oh come on.",
+            "maybe i shouldve made the button a darker blue.. yeah people would avoid it then..",
+            "wow, real funny. LOOK AT WHAT YOU DID?!",
+            "i am beginning to regret this.",
+            "STOP CHASING ME.",
+            "this is a cry for help.",
+            "you have too much free time.",
+            "I AM A BUTTON. LEAVE ME ALONE."
+        ];
+
+        let clicks = 0;
+
+        button.addEventListener("click", function() {
+            clicks++;
+
+            const randomMessage =
+                messages[Math.floor(Math.random() * messages.length)];
+
+            message.textContent = randomMessage;
+
+            if (clicks >= 2) {
+                button.style.position = "fixed";
+
+                const maxX = window.innerWidth - button.offsetWidth;
+                const maxY = window.innerHeight - button.offsetHeight;
+
+                const randomX = Math.random() * maxX;
+                const randomY = Math.random() * maxY;
+
+                button.style.left = randomX + "px";
+                button.style.top = randomY + "px";
+            }
+
+            if (clicks >= 5) {
+                button.textContent = "STOP.";
+            }
+
+            if (clicks >= 10) {
+                button.textContent = "I'M BEGGING YOU.";
+            }
+        });
+
+
+        // visitor counter
+
+        const counter = document.getElementById("visitor-counter");
+
+        fetch("https://api.counterapi.dev/v1/leviathans-corner/visits/up")
+            .then(response => response.json())
+            .then(data => {
+                counter.textContent = "visitor number " + data.count;
+            })
+            .catch(() => {
+                counter.textContent = "the counter is currently hiding.";
+            });
+    </script>
+
 </body>
 </html>
